@@ -4,3 +4,6 @@ C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\Debug\WinformCplusplus.v
 D:\Git\Repos\MusicReader\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
 D:\Git\Repos\MusicReader\WinformCplusplus\Debug\WinformCplusplus.MyForm.resources
 D:\Git\Repos\MusicReader\WinformCplusplus\Debug\WinformCplusplus.vcxproj.GenerateResource.cache
+C:\Users\Etudiant1\Documents\LocalRepository\MusicReader\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
+C:\Users\Etudiant1\Documents\LocalRepository\MusicReader\WinformCplusplus\Debug\WinformCplusplus.MyForm.resources
+C:\Users\Etudiant1\Documents\LocalRepository\MusicReader\WinformCplusplus\Debug\WinformCplusplus.vcxproj.GenerateResource.cache

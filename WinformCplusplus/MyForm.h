@@ -27,7 +27,6 @@ namespace WinformCplusplus {
 			//
 			//TODO: ajoutez ici le code du constructeur
 			//
-			init();
 		}
 
 
@@ -314,18 +313,9 @@ namespace WinformCplusplus {
 		{
 			System::String^ filePath = listView1->SelectedItems[0]->SubItems[1]->Text;
 			System::String^ fileFormat = listView1->SelectedItems[0]->SubItems[3]->Text;
-			if (fileFormat == "WAV")
-			{
-				WAVReader::PlayMusic((const char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(filePath));
-			}
-			else if (fileFormat == "OGG")
-			{
-				OGGReader::Play((const char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(filePath));
-			}
-			else
-			{
-				MessageBox::Show("Unsupported audio format: " + fileFormat);
-			}
+			char* str2 = (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(fileFormat);
+			char* filePathChar = (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(filePath);
+			Player::Play(filePathChar, str2, volumeTrackBar->Value / 100.f);
 		}
 		else
 		{
@@ -334,6 +324,7 @@ namespace WinformCplusplus {
 	}
 	private: System::Void volumeTrackBar_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 		volumeTextBox->Text = volumeTrackBar->Value.ToString();
+		Player::ChangeVolume(volumeTrackBar->Value / 100.0f);
 	}
 	private: System::Void addButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		// Open file dialog to select audio files (e.g., WAV files and OGG files)
@@ -365,10 +356,13 @@ namespace WinformCplusplus {
 		}
 	}
 	private: System::Void pauseButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		Player::Pause();
 	}
 	private: System::Void resumeButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		Player::Resume();
 	}
 	private: System::Void stopButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		Player::End();
 	}
 	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}

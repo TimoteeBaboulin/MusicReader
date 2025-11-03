@@ -5,6 +5,7 @@ using namespace System::Windows::Forms;
 
 [STAThreadAttribute]
 void Main(array<String^>^ args) {
+	Player::init();
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	WinformCplusplus::MyForm form;

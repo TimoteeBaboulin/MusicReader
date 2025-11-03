@@ -2,27 +2,10 @@
 #include <fstream>
 #include <vorbis/vorbisfile.h>
 #include <stdio.h>
-
-ALuint OGGReader::m_Buffer = 0;
-ALuint OGGReader::m_Source = 0;
-
-void OGGReader::Init()
-{
-	alGenBuffers(1, &m_Buffer);
-	alGenSources(1, &m_Source);
-}
+#include "Player.h"
 
 void OGGReader::Play(const char* _path)
 {
-    if (m_Source == 0 || m_Buffer == 0)
-		return;
-    ALint value;
-    alGetSourcei(m_Source, AL_SOURCE_STATE, &value);
-    if (value != AL_STOPPED && value != AL_INITIAL)
-    {
-        alSourceStop(m_Source);
-    }
-
 	OGGData data;
 	if (!TryLoadOGG(_path, &data))
 	{
@@ -44,37 +27,7 @@ void OGGReader::Play(const char* _path)
 	ALsizei size = static_cast<ALsizei>(data.size);
 	ALsizei freq = static_cast<ALsizei>(data.sampleRate);
 
-	alBufferData(m_Buffer, format, data.data, static_cast<ALsizei>(data.size), static_cast<ALsizei>(data.sampleRate));
-	alSourcei(m_Source, AL_BUFFER, m_Buffer);
-	alSourcePlay(m_Source);
-}
-
-void OGGReader::Pause()
-{
-    if (m_Source == 0) return;
-    ALint value;
-    alGetSourcei(m_Source, AL_SOURCE_STATE, &value);
-    if (value != AL_PLAYING)
-		return;
-
-    alSourcePause(m_Source);
-}
-
-void OGGReader::Resume()
-{
-	if (m_Source == 0) return;
-	ALint value;
-	alGetSourcei(m_Source, AL_SOURCE_STATE, &value);
-	if (value != AL_PAUSED)
-		return;
-    alSourcePlay(m_Source);
-}
-
-void OGGReader::End()
-{
-	if (m_Source == 0) return;
-
-    alSourceStop(m_Source);
+	alBufferData(*Player::m_Buffer, format, data.data, static_cast<ALsizei>(data.size), static_cast<ALsizei>(data.sampleRate));
 }
 
 bool OGGReader::TryLoadOGG(const char* _path, OGGData* _data)
