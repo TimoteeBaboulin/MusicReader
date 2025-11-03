@@ -4,7 +4,7 @@
 static class Player {
 public:
 	static int init();
-	static int Play(const char* fileName, const char* extension, float volume);
+	static void Play(const char* fileName, const char* extension, float volume);
 	static void Resume();
 	static void Pause();
 	static void End();
