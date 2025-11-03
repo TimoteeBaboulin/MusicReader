@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Etudiant2\\Desktop\\MusicReader\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FC227681-521C-45F4-B469-009A8403CDBF}|WinformCplusplus\\WinformCplusplus.vcxproj|C:\\Users\\Etudiant2\\Desktop\\MusicReader\\WinformCplusplus\\MyForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC227681-521C-45F4-B469-009A8403CDBF}|WinformCplusplus\\WinformCplusplus.vcxproj|solutionrelative:WinformCplusplus\\MyForm.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC227681-521C-45F4-B469-009A8403CDBF}|WinformCplusplus\\WinformCplusplus.vcxproj|C:\\Users\\Etudiant2\\Desktop\\MusicReader\\WinformCplusplus\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FC227681-521C-45F4-B469-009A8403CDBF}|WinformCplusplus\\WinformCplusplus.vcxproj|solutionrelative:WinformCplusplus\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MyForm.cpp",
+              "DocumentMoniker": "C:\\Users\\Etudiant2\\Desktop\\MusicReader\\WinformCplusplus\\MyForm.cpp",
+              "RelativeDocumentMoniker": "WinformCplusplus\\MyForm.cpp",
+              "ToolTip": "C:\\Users\\Etudiant2\\Desktop\\MusicReader\\WinformCplusplus\\MyForm.cpp",
+              "RelativeToolTip": "WinformCplusplus\\MyForm.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-03T09:58:58.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Users\\Etudiant2\\Desktop\\MusicReader\\WinformCplusplus\\Player.cpp",
+              "RelativeDocumentMoniker": "WinformCplusplus\\Player.cpp",
+              "ToolTip": "C:\\Users\\Etudiant2\\Desktop\\MusicReader\\WinformCplusplus\\Player.cpp",
+              "RelativeToolTip": "WinformCplusplus\\Player.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-03T09:58:57.663Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

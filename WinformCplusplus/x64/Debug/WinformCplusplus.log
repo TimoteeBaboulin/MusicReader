@@ -1,0 +1,18 @@
+﻿  aldlist.cpp
+C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\framework\Win32\LoadOAL.h(1,10): error C1083: Cannot open include file: 'al.h': No such file or directory
+  (compiling source file 'framework/Win32/aldlist.cpp')
+  
+  CWaves.cpp
+  Framework.cpp
+C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\framework\Win32\Framework.h(10,9): error C1083: Cannot open include file: 'al.h': No such file or directory
+  (compiling source file 'framework/Win32/Framework.cpp')
+  
+  LoadOAL.cpp
+C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\framework\Win32\LoadOAL.h(1,10): error C1083: Cannot open include file: 'al.h': No such file or directory
+  (compiling source file 'framework/Win32/LoadOAL.cpp')
+  
+  MyForm.cpp
+  Player.cpp
+C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\Player.cpp(2,9): error C1083: Cannot open include file: 'Framework.h': No such file or directory
+  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+  Generating Code...

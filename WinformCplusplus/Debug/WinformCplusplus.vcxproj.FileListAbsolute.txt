@@ -1,0 +1,3 @@
+C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\Debug\WinformCplusplus.vcxproj.AssemblyReference.cache
+C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\Debug\WinformCplusplus.MyForm.resources
+C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\Debug\WinformCplusplus.vcxproj.GenerateResource.cache
