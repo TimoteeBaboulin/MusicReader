@@ -1,5 +1,5 @@
 #include "Player.h"
-#define	WATER_STREAM_0		"Ruisseau_Escattes_01.wav"
+#define	WATER_STREAM_0		"C:/Users/Etudiant1/Documents/LocalRepository/MusicReader/WinformCplusplus/BadApple.ogg"
 #define	WATER_STREAM_1		"Ruisseau_Escattes_02.wav"
 #pragma once
 
