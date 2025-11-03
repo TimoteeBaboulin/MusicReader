@@ -13,11 +13,14 @@ struct OGGData
 class OGGReader
 {
 public:
-	void Init();
-	void Play(const char* _path);
+	static void Init();
+	static void Play(const char* _path);
 private:
-	bool TryLoadOGG(const char* _path, OGGData* _data);
-	ALuint m_Buffer;
-	ALuint m_Source;
+	static bool TryLoadOGG(const char* _path, OGGData* _data);
+	static void Pause();
+	static void Resume();
+	static void End();
+	static ALuint m_Buffer;
+	static ALuint m_Source;
 };
 

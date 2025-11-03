@@ -3,6 +3,8 @@
 #include <vorbis/vorbisfile.h>
 #include <stdio.h>
 
+ALuint OGGReader::m_Buffer = 0;
+ALuint OGGReader::m_Source = 0;
 
 void OGGReader::Init()
 {
@@ -36,6 +38,34 @@ void OGGReader::Play(const char* _path)
 	alBufferData(m_Buffer, format, data.data, static_cast<ALsizei>(data.size), static_cast<ALsizei>(data.sampleRate));
 	alSourcei(m_Source, AL_BUFFER, m_Buffer);
 	alSourcePlay(m_Source);
+}
+
+void OGGReader::Pause()
+{
+    if (m_Source == 0) return;
+    ALint value;
+    alGetSourcei(m_Source, AL_SOURCE_STATE, &value);
+    if (value != AL_PLAYING)
+		return;
+
+    alSourcePause(m_Source);
+}
+
+void OGGReader::Resume()
+{
+	if (m_Source == 0) return;
+	ALint value;
+	alGetSourcei(m_Source, AL_SOURCE_STATE, &value);
+	if (value != AL_PAUSED)
+		return;
+    alSourcePlay(m_Source);
+}
+
+void OGGReader::End()
+{
+	if (m_Source == 0) return;
+
+    alSourceStop(m_Source);
 }
 
 bool OGGReader::TryLoadOGG(const char* _path, OGGData* _data)
