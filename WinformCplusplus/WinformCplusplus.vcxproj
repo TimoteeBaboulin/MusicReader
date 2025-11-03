@@ -141,6 +141,7 @@
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="OGGReader.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="WAVReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\Win32\aldlist.h" />
@@ -152,6 +153,7 @@
     </ClInclude>
     <ClInclude Include="OGGReader.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="WAVReader.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
