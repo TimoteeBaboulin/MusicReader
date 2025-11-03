@@ -14,6 +14,15 @@ void OGGReader::Init()
 
 void OGGReader::Play(const char* _path)
 {
+    if (m_Source == 0 || m_Buffer == 0)
+		return;
+    ALint value;
+    alGetSourcei(m_Source, AL_SOURCE_STATE, &value);
+    if (value != AL_STOPPED && value != AL_INITIAL)
+    {
+        alSourceStop(m_Source);
+    }
+
 	OGGData data;
 	if (!TryLoadOGG(_path, &data))
 	{
