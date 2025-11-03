@@ -1,26 +1,34 @@
-﻿  aldlist.cpp
-D:\Git\Repos\MusicReader\WinformCplusplus\framework\Win32\aldlist.cpp(42,19): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-D:\Git\Repos\MusicReader\WinformCplusplus\framework\Win32\aldlist.cpp(133,41): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-D:\Git\Repos\MusicReader\WinformCplusplus\framework\Win32\aldlist.cpp(138,19): warning C4858: discarding return value: This member function returns a bool indicating whether the container is empty and has no other effects. It is not useful to call this member function and discard the return value. Use the 'clear()' member function if you want to erase all elements.
-  CWaves.cpp
-  Framework.cpp
-D:\Git\Repos\MusicReader\WinformCplusplus\framework\Win32\Framework.cpp(210,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  LoadOAL.cpp
-  MyForm.cpp
-  Player.cpp
-D:\Git\Repos\MusicReader\WinformCplusplus\Player.cpp(19,14): warning C4101: 'iState': unreferenced local variable
-  .NETFramework,Version=v4.7.2.AssemblyAttributes.cpp
+﻿  MyForm.cpp
+  WAVReader.cpp
+C:\Users\Etudiant2\Desktop\MusicReader\WinformCplusplus\WAVReader.h(4,14): warning C4091: 'static ': ignored on left of 'WAVReader' when no variable is declared
+  (compiling source file 'WAVReader.cpp')
+  
   Generating Code...
-D:\Git\Repos\MusicReader\WinformCplusplus\Player.cpp(13): warning C4715: 'init': not all control paths return a value
-D:\Git\Repos\MusicReader\WinformCplusplus\framework\Win32\Framework.cpp(200): warning C4793: 'ALFWprintf': function compiled as native:
-  	varargs not supported under /clr
-D:\Git\Repos\MusicReader\WinformCplusplus\framework\Win32\Framework.cpp(202): warning C4793: 'ALFWprintf': function compiled as native:
-  	Found an intrinsic not supported in managed code
-D:\Git\Repos\MusicReader\WinformCplusplus\framework\Win32\Framework.cpp(204): warning C4793: 'ALFWprintf': function compiled as native:
-  	Found an intrinsic not supported in managed code
   aldlist.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+libvorbisfile_static.lib(vorbisfile.obj) : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
 Framework.obj : warning LNK4248: unresolved typeref token (0100001C) for 'ALCdevice_struct'; image may not run
 aldlist.obj : warning LNK4248: unresolved typeref token (0100001B) for 'ALCdevice_struct'; image may not run
 Framework.obj : warning LNK4248: unresolved typeref token (0100001B) for 'ALCcontext_struct'; image may not run
 aldlist.obj : warning LNK4248: unresolved typeref token (0100001C) for 'ALCcontext_struct'; image may not run
-  WinformCplusplus.vcxproj -> D:\Git\Repos\MusicReader\Debug\WinformCplusplus.exe
+libogg.lib(bitwise.obj) : warning LNK4099: PDB 'libogg.pdb' was not found with 'libogg.lib(bitwise.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libogg.pdb'; linking object as if no debug info
+libogg.lib(framing.obj) : warning LNK4099: PDB 'libogg.pdb' was not found with 'libogg.lib(framing.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libogg.pdb'; linking object as if no debug info
+libvorbis_static.lib(bitrate.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(bitrate.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(block.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(block.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(codebook.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(codebook.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(envelope.obj) : warning LNK4099: PDB '' was not found with 'libvorbis_static.lib(envelope.obj)' or at ''; linking object as if no debug info
+libvorbis_static.lib(floor0.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(floor0.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(floor1.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(floor1.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(info.obj) : warning LNK4099: PDB '' was not found with 'libvorbis_static.lib(info.obj)' or at ''; linking object as if no debug info
+libvorbis_static.lib(lpc.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(lpc.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(lsp.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(lsp.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(mapping0.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(mapping0.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(mdct.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(mdct.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(psy.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(psy.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(registry.obj) : warning LNK4099: PDB '' was not found with 'libvorbis_static.lib(registry.obj)' or at ''; linking object as if no debug info
+libvorbis_static.lib(res0.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(res0.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(sharedbook.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(sharedbook.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(smallft.obj) : warning LNK4099: PDB '' was not found with 'libvorbis_static.lib(smallft.obj)' or at ''; linking object as if no debug info
+libvorbis_static.lib(synthesis.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(synthesis.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbis_static.lib(window.obj) : warning LNK4099: PDB 'libvorbis_static.pdb' was not found with 'libvorbis_static.lib(window.obj)' or at 'C:\Users\Etudiant2\Desktop\MusicReader\Debug\libvorbis_static.pdb'; linking object as if no debug info
+libvorbisfile_static.lib(vorbisfile.obj) : warning LNK4099: PDB '' was not found with 'libvorbisfile_static.lib(vorbisfile.obj)' or at ''; linking object as if no debug info
+  WinformCplusplus.vcxproj -> C:\Users\Etudiant2\Desktop\MusicReader\Debug\WinformCplusplus.exe

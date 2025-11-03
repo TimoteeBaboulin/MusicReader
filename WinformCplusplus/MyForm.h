@@ -60,6 +60,21 @@ namespace WinformCplusplus {
 	private: System::Windows::Forms::ToolStripMenuItem^ saveToolStripMenuItem;
 	private: System::Windows::Forms::TrackBar^ volumeTrackBar;
 	private: System::Windows::Forms::TextBox^ volumeTextBox;
+	private: System::Windows::Forms::ColumnHeader^ pathHeader;
+	private: System::Windows::Forms::ColumnHeader^ sizeHeader;
+	private: System::Windows::Forms::ColumnHeader^ formatHeader;
+	private: System::Windows::Forms::ColumnHeader^ nameHeader;
+
+	private:
+
+
+
+
+
+
+
+
+
 
 
 
@@ -87,6 +102,10 @@ namespace WinformCplusplus {
 			this->resumeButton = (gcnew System::Windows::Forms::Button());
 			this->stopButton = (gcnew System::Windows::Forms::Button());
 			this->listView1 = (gcnew System::Windows::Forms::ListView());
+			this->nameHeader = (gcnew System::Windows::Forms::ColumnHeader());
+			this->pathHeader = (gcnew System::Windows::Forms::ColumnHeader());
+			this->sizeHeader = (gcnew System::Windows::Forms::ColumnHeader());
+			this->formatHeader = (gcnew System::Windows::Forms::ColumnHeader());
 			this->addButton = (gcnew System::Windows::Forms::Button());
 			this->removeButton = (gcnew System::Windows::Forms::Button());
 			this->menuStrip = (gcnew System::Windows::Forms::MenuStrip());
@@ -105,60 +124,84 @@ namespace WinformCplusplus {
 			// 
 			// playButton
 			// 
-			this->playButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->playButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->playButton->Location = System::Drawing::Point(579, 26);
 			this->playButton->Name = L"playButton";
 			this->playButton->Size = System::Drawing::Size(48, 48);
 			this->playButton->TabIndex = 0;
-			this->playButton->Text = L"▶";
+			this->playButton->Text = L"Play";
 			this->playButton->UseVisualStyleBackColor = true;
 			this->playButton->Click += gcnew System::EventHandler(this, &MyForm::playButton_Click);
 			// 
 			// pauseButton
 			// 
-			this->pauseButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->pauseButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->pauseButton->Location = System::Drawing::Point(579, 80);
 			this->pauseButton->Name = L"pauseButton";
 			this->pauseButton->Size = System::Drawing::Size(48, 48);
 			this->pauseButton->TabIndex = 1;
-			this->pauseButton->Text = L"⏸";
+			this->pauseButton->Text = L"Pause";
 			this->pauseButton->UseVisualStyleBackColor = true;
 			this->pauseButton->Click += gcnew System::EventHandler(this, &MyForm::pauseButton_Click);
 			// 
 			// resumeButton
 			// 
-			this->resumeButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->resumeButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->resumeButton->Location = System::Drawing::Point(579, 134);
 			this->resumeButton->Name = L"resumeButton";
 			this->resumeButton->Size = System::Drawing::Size(48, 48);
 			this->resumeButton->TabIndex = 2;
-			this->resumeButton->Text = L"⏯";
+			this->resumeButton->Text = L"Resume";
 			this->resumeButton->UseVisualStyleBackColor = true;
 			this->resumeButton->Click += gcnew System::EventHandler(this, &MyForm::resumeButton_Click);
 			// 
 			// stopButton
 			// 
-			this->stopButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->stopButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 6.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->stopButton->Location = System::Drawing::Point(579, 188);
 			this->stopButton->Name = L"stopButton";
 			this->stopButton->Size = System::Drawing::Size(48, 48);
 			this->stopButton->TabIndex = 3;
-			this->stopButton->Text = L"⏹";
+			this->stopButton->Text = L"Stop";
 			this->stopButton->UseVisualStyleBackColor = true;
 			this->stopButton->Click += gcnew System::EventHandler(this, &MyForm::stopButton_Click);
 			// 
 			// listView1
 			// 
+			this->listView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::ColumnHeader^  >(4) {
+				this->nameHeader, this->pathHeader,
+					this->sizeHeader, this->formatHeader
+			});
 			this->listView1->HideSelection = false;
 			this->listView1->Location = System::Drawing::Point(12, 27);
 			this->listView1->Name = L"listView1";
 			this->listView1->Size = System::Drawing::Size(561, 209);
 			this->listView1->TabIndex = 4;
 			this->listView1->UseCompatibleStateImageBehavior = false;
+			this->listView1->View = System::Windows::Forms::View::Details;
+			// 
+			// nameHeader
+			// 
+			this->nameHeader->Text = L"Name";
+			this->nameHeader->Width = 100;
+			// 
+			// pathHeader
+			// 
+			this->pathHeader->Text = L"Path";
+			this->pathHeader->Width = 351;
+			// 
+			// sizeHeader
+			// 
+			this->sizeHeader->Text = L"Size";
+			// 
+			// formatHeader
+			// 
+			this->formatHeader->Text = L"Format";
+			this->formatHeader->Width = 50;
 			// 
 			// addButton
 			// 
@@ -206,14 +249,14 @@ namespace WinformCplusplus {
 			// openToolStripMenuItem
 			// 
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->openToolStripMenuItem->Text = L"Open";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::openToolStripMenuItem_Click);
 			// 
 			// saveToolStripMenuItem
 			// 
 			this->saveToolStripMenuItem->Name = L"saveToolStripMenuItem";
-			this->saveToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->saveToolStripMenuItem->Size = System::Drawing::Size(103, 22);
 			this->saveToolStripMenuItem->Text = L"Save";
 			this->saveToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::saveToolStripMenuItem_Click);
 			// 
@@ -276,16 +319,15 @@ namespace WinformCplusplus {
 		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 		{
 			// Add selected files to the list view
-			// Format: Filename (Full Path, Hidden) - Name (name + extension) - Duration (mm:ss) - Size (KB) - Format (WAV/OGG)
+			// Format: Filename (Full Path, Hidden) - Name (name + extension) - Size (KB) - Format (WAV/OGG)
 			for each (System::String^ file in openFileDialog1->FileNames)
 			{
 				System::IO::FileInfo^ fileInfo = gcnew System::IO::FileInfo(file);
 				System::String^ fileName = fileInfo->Name;
 				System::String^ fileSize = (fileInfo->Length / 1024).ToString() + " KB";
 				System::String^ fileFormat = fileInfo->Extension->ToUpper()->TrimStart('.');
-				System::Windows::Forms::ListViewItem^ item = gcnew System::Windows::Forms::ListViewItem(file);
-				item->SubItems->Add(fileName);
-				item->SubItems->Add("00:00"); // Placeholder for duration
+				System::Windows::Forms::ListViewItem^ item = gcnew System::Windows::Forms::ListViewItem(fileName);
+				item->SubItems->Add(file);
 				item->SubItems->Add(fileSize);
 				item->SubItems->Add(fileFormat);
 				listView1->Items->Add(item);
