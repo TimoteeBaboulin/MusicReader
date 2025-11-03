@@ -177,6 +177,7 @@ namespace WinformCplusplus {
 				this->nameHeader, this->pathHeader,
 					this->sizeHeader, this->formatHeader
 			});
+			this->listView1->FullRowSelect = true;
 			this->listView1->HideSelection = false;
 			this->listView1->Location = System::Drawing::Point(12, 27);
 			this->listView1->Name = L"listView1";
@@ -250,14 +251,14 @@ namespace WinformCplusplus {
 			// openToolStripMenuItem
 			// 
 			this->openToolStripMenuItem->Name = L"openToolStripMenuItem";
-			this->openToolStripMenuItem->Size = System::Drawing::Size(103, 22);
+			this->openToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->openToolStripMenuItem->Text = L"Open";
 			this->openToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::openToolStripMenuItem_Click);
 			// 
 			// saveToolStripMenuItem
 			// 
 			this->saveToolStripMenuItem->Name = L"saveToolStripMenuItem";
-			this->saveToolStripMenuItem->Size = System::Drawing::Size(103, 22);
+			this->saveToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->saveToolStripMenuItem->Text = L"Save";
 			this->saveToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::saveToolStripMenuItem_Click);
 			// 
@@ -365,8 +366,53 @@ namespace WinformCplusplus {
 		Player::End();
 	}
 	private: System::Void openToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		openFileDialog1->Multiselect = false;
+		openFileDialog1->Filter = "Playlist Files|*.pllst|All Files|*.*";
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			if (listView1->Items->Count > 0)
+			{
+				if (MessageBox::Show("Do you want to clear the current playlist before loading a new one?", 
+					"Clear Playlist", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::Yes)
+				{
+					listView1->Items->Clear();
+				}
+				else
+				{
+					return;
+				}
+			}
+			System::String^ playlistPath = openFileDialog1->FileName;
+			array<System::String^>^ lines = System::IO::File::ReadAllLines(playlistPath);
+			for each (System::String^ line in lines)
+			{
+				if (System::IO::File::Exists(line))
+				{
+					System::IO::FileInfo^ fileInfo = gcnew System::IO::FileInfo(line);
+					System::String^ fileName = fileInfo->Name;
+					System::String^ fileSize = (fileInfo->Length / 1024).ToString() + " KB";
+					System::String^ fileFormat = fileInfo->Extension->ToUpper()->TrimStart('.');
+					System::Windows::Forms::ListViewItem^ item = gcnew System::Windows::Forms::ListViewItem(fileName);
+					item->SubItems->Add(line);
+					item->SubItems->Add(fileSize);
+					item->SubItems->Add(fileFormat);
+					listView1->Items->Add(item);
+				}
+			}
+		}
 	}
 	private: System::Void saveToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		saveFileDialog1->Filter = "Playlist Files|*.pllst|All Files|*.*";
+		if (saveFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			System::String^ playlistPath = saveFileDialog1->FileName;
+			array<System::String^>^ lines = gcnew array<System::String^>(listView1->Items->Count);
+			for (int i = 0; i < listView1->Items->Count; i++)
+			{
+				lines[i] = listView1->Items[i]->SubItems[1]->Text;
+			}
+			System::IO::File::WriteAllLines(playlistPath, lines);
+		}
 	}
 	};
 }
