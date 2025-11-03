@@ -9,7 +9,6 @@ ALuint* Player::m_Buffer = new ALuint;
 int Player::init() {
 	// Initialize Framework
 	ALFWInit();
-
 	if (!ALFWInitOpenAL())
 	{
 		ALFWShutdown();
@@ -17,14 +16,19 @@ int Player::init() {
 	}
 }
 
-int Player::Play(const char * fileName, const char* extension, float volume)
+void Player::Play(const char * fileName, const char* extension, float volume)
 {
 	if (*m_Source == 0 || *m_Buffer == 0)
-		return 0;
+		return;
 
 	ALint* sourceState = new ALint;
 	alGetSourcei(*m_Source, AL_SOURCE_STATE, sourceState);
-	if (*sourceState == AL_PLAYING) End();
+	if (*sourceState == AL_PLAYING) 
+	{
+		End();
+		alDeleteSources(1, m_Source);
+		alDeleteBuffers(1, m_Buffer);
+	}
 
 	alGenBuffers(1, m_Buffer);
 
@@ -41,7 +45,6 @@ int Player::Play(const char * fileName, const char* extension, float volume)
 	alSourcei(*m_Source, AL_BUFFER, *m_Buffer);
 	ChangeVolume(volume);
 	alSourcePlay(*m_Source);
-	return 0;
 }
 
 void Player::Pause()
