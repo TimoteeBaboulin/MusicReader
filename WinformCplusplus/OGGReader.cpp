@@ -30,6 +30,9 @@ void OGGReader::Play(const char* _path)
 		throw gcnew System::NotImplementedException();
 	}
 
+	ALsizei size = static_cast<ALsizei>(data.size);
+	ALsizei freq = static_cast<ALsizei>(data.sampleRate);
+
 	alBufferData(m_Buffer, format, data.data, static_cast<ALsizei>(data.size), static_cast<ALsizei>(data.sampleRate));
 	alSourcei(m_Source, AL_BUFFER, m_Buffer);
 	alSourcePlay(m_Source);
@@ -37,23 +40,64 @@ void OGGReader::Play(const char* _path)
 
 bool OGGReader::TryLoadOGG(const char* _path, OGGData* _data)
 {
-	//std::ifstream file(_path, std::ios::binary);
-	//FILE* file = nullptr;
-	//errno_t error = fopen_s(&file, _path, "rb");
-	//if (error != 0 || file == nullptr)
-	//	return false;
-	
-	OggVorbis_File oggFile;
-	if (ov_fopen(_path, &oggFile) < 0)
-		return false;
+    OggVorbis_File oggFile;
+    int result = ov_fopen(_path, &oggFile);
+    if (result < 0)
+        return false;
 
-	vorbis_info* pInfo = ov_info(&oggFile, -1);
-	_data->channels = pInfo->channels;
-	_data->sampleRate = pInfo->rate;
+    vorbis_info* pInfo = ov_info(&oggFile, -1);
+    if (!pInfo)
+    {
+        ov_clear(&oggFile);
+        return false;
+    }
 
-	// Read the entire OGG file into memory
-	_data->data = new char[ov_pcm_total(&oggFile, -1) * _data->channels * 2];
-	_data->size = ov_read(&oggFile, _data->data, _data->size, 0, 2, 1, nullptr);
-	ov_clear(&oggFile);
-	return true;
+    _data->channels = pInfo->channels;
+    _data->sampleRate = pInfo->rate;
+
+    // Get total PCM samples (per channel)
+    ogg_int64_t totalSamples = ov_pcm_total(&oggFile, -1);
+    if (totalSamples <= 0)
+    {
+        ov_clear(&oggFile);
+        return false;
+    }
+
+    // bytes = samples * channels * 2 (16-bit)
+    size_t bufferSize = static_cast<size_t>(totalSamples) * static_cast<size_t>(_data->channels) * 2u;
+
+    _data->data = new char[bufferSize];
+    if (!_data->data)
+    {
+        ov_clear(&oggFile);
+        return false;
+    }
+
+    size_t totalRead = 0;
+    int bitstream = 0;
+    while (totalRead < bufferSize)
+    {
+        // ov_read takes an int length; clamp to INT_MAX if necessary
+        long toRead = static_cast<long>(bufferSize - totalRead);
+        if (toRead > INT_MAX) toRead = INT_MAX;
+
+        long ret = ov_read(&oggFile, _data->data + totalRead, static_cast<int>(toRead), 0, 2, 1, &bitstream);
+        if (ret < 0)
+        {
+            // read error
+            delete[] _data->data;
+            _data->data = nullptr;
+            _data->size = 0;
+            ov_clear(&oggFile);
+            return false;
+        }
+        if (ret == 0)
+            break; // EOF
+
+        totalRead += static_cast<size_t>(ret);
+    }
+
+    _data->size = totalRead;
+    ov_clear(&oggFile);
+    return true;
 }
