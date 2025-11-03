@@ -73,9 +73,13 @@ void Player::End()
 	if (*m_Source == 0) return;
 
 	alSourceStop(*m_Source);
+	alDeleteSources(1, m_Source);
+	alDeleteBuffers(1, m_Buffer);
 }
 
 void Player::ChangeVolume(float value)
 {
+	if (*m_Source == 0) return;
+
 	alSourcef(*m_Source, AL_GAIN, value);
 }
