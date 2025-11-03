@@ -30,7 +30,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v145</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -140,6 +140,7 @@
     <ClCompile Include="framework\Win32\LoadOAL.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="WAVReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework\Win32\aldlist.h" />
@@ -150,6 +151,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Player.h" />
+    <ClInclude Include="WAVReader.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
