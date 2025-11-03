@@ -28,6 +28,7 @@ void OGGReader::Play(const char* _path)
 	ALsizei freq = static_cast<ALsizei>(data.sampleRate);
 
 	alBufferData(*Player::m_Buffer, format, data.data, static_cast<ALsizei>(data.size), static_cast<ALsizei>(data.sampleRate));
+    delete[] data.data;
 }
 
 bool OGGReader::TryLoadOGG(const char* _path, OGGData* _data)
@@ -91,5 +92,6 @@ bool OGGReader::TryLoadOGG(const char* _path, OGGData* _data)
 
     _data->size = totalRead;
     ov_clear(&oggFile);
+
     return true;
 }
