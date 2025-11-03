@@ -1,4 +1,6 @@
 #include "Player.h"
+#include "WAVReader.h"
+#include "OGGReader.h"
 #define	WATER_STREAM_0		"C:/Users/Etudiant1/Documents/LocalRepository/MusicReader/WinformCplusplus/BadApple.ogg"
 #define	WATER_STREAM_1		"Ruisseau_Escattes_02.wav"
 #pragma once
@@ -307,7 +309,28 @@ namespace WinformCplusplus {
 		}
 #pragma endregion
 	private: System::Void playButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		Play(WATER_STREAM_0);
+		// Play the selected audio file from the list view with the right reader (WAV or OGG)
+		if (listView1->SelectedItems->Count > 0)
+		{
+			System::String^ filePath = listView1->SelectedItems[0]->SubItems[1]->Text;
+			System::String^ fileFormat = listView1->SelectedItems[0]->SubItems[3]->Text;
+			if (fileFormat == "WAV")
+			{
+				WAVReader::PlayMusic((const char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(filePath));
+			}
+			else if (fileFormat == "OGG")
+			{
+				OGGReader::Play((const char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(filePath));
+			}
+			else
+			{
+				MessageBox::Show("Unsupported audio format: " + fileFormat);
+			}
+		}
+		else
+		{
+			MessageBox::Show("Please select an audio file to play.");
+		}
 	}
 	private: System::Void volumeTrackBar_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 		volumeTextBox->Text = volumeTrackBar->Value.ToString();
